@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
-
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +36,10 @@ private DaoService prdtbean;
 	
 	@ModelAttribute("prdt")
 	public Product createModel(){
+		return new  Product();
+	}
+	@ModelAttribute("viewpro")
+	public Product creat(){
 		return new  Product();
 	}
 	
@@ -91,10 +92,7 @@ private DaoService prdtbean;
 	   }
 	
 		
-		@ModelAttribute("prdt1ad")
-		public Product createUpdate(){
-			return new  Product();
-		}
+		
 
 	 @RequestMapping("/updateprdt" )
 	   public String update() {
@@ -162,12 +160,8 @@ private DaoService prdtbean;
 		 return mv;
 	 }
 	
-	@RequestMapping(value="/view")
-	
-	 public ModelAndView viewlist(HttpServletRequest req) {
-		Product chview = new Product();
-		String viewpro = chview.getProduct_Name();
-	   return new ModelAndView("view","prdtlist",viewpro);
-	    
-	   }
+	 
+
+
 }
+

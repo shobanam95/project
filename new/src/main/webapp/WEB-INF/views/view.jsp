@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<form:form  method = "post" action = "./viewprdt" commandName="viewpro" >
+<form:form  method = "post" action = "prdtlist" commandName="viewpro" >
 <table>
   <tr>
            <td><form:label path="product_Name">Product Name:</form:label></td>
@@ -17,11 +17,11 @@
        </tr>
        <tr>
            <td><form:label path="product_Description">Product Description:</form:label></td>
-           <td><form:input path="product_Description"  value = "${viewpro.product_Description }"/></td>
+           <td><form:input path="product_Description" /></td>
        </tr>
        <tr>
            <td><form:label path="product_Price">Product Price:</form:label></td>
-           <td><form:input path="product_Price"  value = "${viewpro.product_Price }"/>                                                                                                                         guy8/></td>
+           <td><form:input path="product_Price" /> </td>                                                                                                                        guy8/></td>
        </tr>
        <tr>
            <td><form:label path="category">Category:</form:label></td>

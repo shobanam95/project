@@ -28,7 +28,7 @@
     <td>${cat.getProduct_Name()}</td>
     <td>${cat.getProduct_Description()}</td>
     <td>${cat.getProduct_Price()}</td>
-    <td><a href ="view?cat="${prod }">view</a></td>
+    <td><a href ="view">view</a></td>
     
 				</c:forEach>
 </table>

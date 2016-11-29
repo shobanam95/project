@@ -136,6 +136,10 @@ $(function(){
            </select>
      
        </tr>
+       <tr>
+       
+       <td><form:label path="file" name="file"></form:label>
+       </tr>
                  <tr>
          <td colspan="2"> <a href="addprdt"><input type="submit" value="add"/></a></td>
         </tr>
