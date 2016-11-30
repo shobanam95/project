@@ -49,7 +49,7 @@ public class Daoimpl  implements DaoService {
 		
 		
 		  session.update(prdt);
-		
+		session.flush();
 		  System.out.println("Updated Successfully");
 		  		  
 		 }	

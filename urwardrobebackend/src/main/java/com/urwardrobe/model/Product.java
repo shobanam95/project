@@ -2,8 +2,7 @@ package com.urwardrobe.model;
 
 import java.io.Serializable;
 
-
-
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+
 
 
 
@@ -30,6 +32,7 @@ public class Product {
 	private String product_Description;
     private int product_Price;
   
+    
 	public String getProduct_Name() {
 		return product_Name;
 	}

@@ -148,6 +148,7 @@ private DaoService prdtbean;
 	 
 	 @RequestMapping(value="/editprdt",method=RequestMethod.POST)
 	 public String editfunc(@ModelAttribute(value="editobj")Product prdt){
+		System.out.println(prdt.getProduct_Name());
 		 prdtbean.update(prdt);
 		 return ("redirect:/listprdt");
 	 }
