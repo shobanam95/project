@@ -4,7 +4,7 @@ package com.urwardrobe.dao;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServlet;
+
 import org.hibernate.Criteria;
 
 import org.hibernate.Session;

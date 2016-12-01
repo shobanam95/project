@@ -1,20 +1,19 @@
 package com.urwardrobe.model;
 
-import java.io.Serializable;
 
-import java.util.List;
 
-import javax.persistence.Column;
+
+
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -31,7 +30,8 @@ public class Product {
 	private String product_Name;
 	private String product_Description;
     private int product_Price;
-  
+   @Transient
+  private MultipartFile file;
     
 	public String getProduct_Name() {
 		return product_Name;
@@ -67,6 +67,15 @@ public class Product {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	@Override
 	    public String toString() {

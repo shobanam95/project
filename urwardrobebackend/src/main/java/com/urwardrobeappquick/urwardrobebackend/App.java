@@ -43,37 +43,7 @@ public class App
 		 
 			DaoService prdtbean = (DaoService)context.getBean("prdtbean");
 
-				/*  		   
-		UserForm  user = new UserForm ();
-			   	
-			   	 
-			        userbean.save(user);
-			        System.out.println("final");
-		   
-			       UserForm  u2 = new UserForm ();  
-			        u2.setPassword("tttt");
-			        System.out.println(u2);
-			        userbean.update(u2); 
-			         userbean.delete(u2);
-			        System.out.println(u2);
-				 */       
-		   
-
-			   
-		Product prdt = new Product();
-		prdt.setProduct_Name("Kurtis");
-		prdt.setCategory("Women");
-		
-		prdt.setProduct_Description("Size:xl");
-		prdt.setProduct_Price(1000);
-		 System.out.println("2");
-		prdtbean.save(prdt);
-		   
-		/*
-			Product prdt1 = new Product();	
-		prdt1.setProduct_Description("Size:l");
-		prdtbean.update(prdt1);
-	*/
+	
 		
 	}
 }
