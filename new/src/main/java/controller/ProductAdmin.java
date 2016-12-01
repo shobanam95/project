@@ -1,27 +1,22 @@
 package controller;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.urwardrobe.dao.DaoService;
-import com.urwardrobe.dao.UserDao;
 import com.urwardrobe.model.Product;
-import com.urwardrobe.model.UserForm;
+
 @Controller
 public class ProductAdmin<prdtbean> {
 	
@@ -161,7 +156,22 @@ private DaoService prdtbean;
 		 return mv;
 	 }
 	
-	 
+	 protected ModelAndView onSubmit(HttpServletRequest request,
+				HttpServletResponse response, Object command, BindException errors)
+				throws Exception {
+
+				Product files = (Product)command;
+
+				MultipartFile multipartFile = files.getFile();
+
+				String fileName="";
+
+				if(multipartFile!=null){
+					fileName = multipartFile.getOriginalFilename();
+					
+				}
+				return new ModelAndView("addprdt","prdt1ad",fileName);
+			}
 
 
 }

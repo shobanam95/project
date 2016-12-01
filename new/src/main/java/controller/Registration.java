@@ -1,25 +1,23 @@
 package controller;
 
-import java.io.IOException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Request;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.ModelMap;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.urwardrobe.dao.UserDao;
+
 import com.urwardrobe.model.UserForm;
 
 @Controller
@@ -27,14 +25,14 @@ public  class Registration  {
 	
 	
 	
-	HttpSession session ;
-	
+	HttpSession session;
+
 	private UserDao userbean;
 	
 	public UserDao getUserbean() {
 		return userbean;
-	}
-
+	}   
+       
 	public void setUserbean(UserDao userbean) {
 		this.userbean = userbean;
 	}
@@ -89,16 +87,10 @@ public  class Registration  {
 	 
 	 
 	 @RequestMapping( value = "/loginpage", method = RequestMethod.POST)
-	   public String addStudent(HttpServletRequest req,ModelMap map) throws ServletException,IOException {
-System.out.println("hgjy");
+	   public String addStudent(HttpServletRequest req,ModelMap map)  {
 		String view="";
 		session = req.getSession(true);
 		List<UserForm> list = userbean.getUser(req.getParameter("checkname"),req.getParameter("checkpwd"));
-		System.out.println(req.getParameter("checkname"));
-		System.out.println(req.getParameter("checkpwd"));
-System.out.print(list);
-		
-		
 		if(!list.isEmpty()){
 		 		for(UserForm role : list){
 		if(role.getRole().equals("ROLE_ADMIN"))
@@ -139,128 +131,10 @@ public String Logou(){
 	return "indexpage";
 }
 	 
-
-}
-
-
-
-	 
-	 
-/*	 
- @RequestMapping("/loginpage")
- public ModelAndView logincheck(HttpServletRequest request){
-	
-	 String log = request.getParameter("username");
-	 String log2 = request.getParameter("password");
-	
-	 List<UserForm> list = userbean.list();
-	 if(list != null){
-		 if(log.equals(getUsername()) && log2.equals(getUserbean()))
-		 {
-			 
-		 }
-			return new ModelAndView("indexpage") ;
-		}
-			else{
-				return new ModelAndView("loginpage") ;
-		}
-	
- }
-
-
-}
- 
-	
-/* String check(UserForm user){
-			UserForm user1 = new UserForm();
-		List<UserForm> list = userbean.list();
-		if(list != null){
-			return "indexpage";
-		}
-			else{
-				return "loginpage";
-		}
-
-}
-}
 			
 			
-			
-			
-			
-			
+}		
 		
-
-
-
-
-
-
-
-/*   package controller;
-
-import java.util.ArrayList;
-
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.stereotype.Controller;
-
-
-import model.Register;
-
-@Controller
-@RequestMapping
-public class RegisterController {
-
-    
-    public String viewRegistration(Map<String, Object> model) {
-    	Register regForm = new Register();    
-        model.put("regForm", regForm);
-         
-        List<String> genderList = new ArrayList();
-        genderList.add("Male");
-        genderList.add("Female");
-        
-        model.put("genderList", genderList);
-         
-        return "signuo";
-    }
-     
-     
-     
-      @RequestMapping( value = "/login", method = RequestMethod.POST)
-	   public String addrelogin() {
-		 System.out.println("inside addstudeent");
-		
-	      return "indexpage";
-	 }
-     
-     
-     
-
-    public String processRegistration(@ModelAttribute("regForm") Register r1,
-            Map<String, Object> model) {
-         
-        // implement your own registration logic here...
-         
-        // for testing purpose:
-        System.out.println("firstname: " + r1.getFirstname());
-        System.out.println("lastname: " + r1.getLastname());
-        System.out.println("password: " + r1.getPassword());
-        System.out.println("email: " + r1.getEmail());
-        System.out.println("birthDay: " + r1.getConfirm_password());
-         
-        return "index";
-    }
-}
-
- */
-
-
-
-
-
 
 
 

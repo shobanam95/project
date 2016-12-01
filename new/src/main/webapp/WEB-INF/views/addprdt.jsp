@@ -111,7 +111,7 @@ $(function(){
     <div class="container">
  <div align="center">
  
-        <form:form  action="addprdts" method="post" commandName="prdt1ad" style=" border-top-width: 100px; height: 1000px; width: 800px; padding-top: 100px; padding-bottom: 100px; left: 100px; top: 100px;">   
+        <form:form  action="addprdts" method="post" commandName="prdt1ad" enctype="multipart/form-data" style=" border-top-width: 100px; height: 1000px; width: 800px; padding-top: 100px; padding-bottom: 100px; left: 100px; top: 100px;">   
          <table>
          
        <tr>
@@ -137,9 +137,13 @@ $(function(){
      
        </tr>
        <tr>
-       
-       <td><form:label path="file" name="file"></form:label>
-       </tr>
+     <form:errors path="*" cssClass="errorblock" element="div" />
+
+		<td> <form:input path="file" name="file" />Please select a file to upload :</td>
+		<td><form:input path="submit" value="upload" /></td>
+		<span><form:errors path="file" cssClass="error" />
+		</span>
+		</tr>
                  <tr>
          <td colspan="2"> <a href="addprdt"><input type="submit" value="add"/></a></td>
         </tr>
