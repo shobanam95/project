@@ -10,6 +10,9 @@
 
 </head>
 <body>
+<div class="item">
+              <img src="resources/images/logo.png">
+      </div>
 <h1>List Product</h1>
 <h3><a href="addprdt">Add More Products</a></h3>
 

@@ -39,7 +39,9 @@ body {background: #456;font-family: 'Open Sans', sans-serif;}
 
 
 
-<h1>Login</h1>
+<div class="item">
+              <img src="resources/images/logo.png">
+      </div>
 <form action = "loginpage" method="post" >
 <div class="container">
 	<div class="row">

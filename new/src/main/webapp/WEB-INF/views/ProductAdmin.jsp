@@ -165,8 +165,9 @@ $(function(){
 <div align="center">
         <form:form  action="productdetails" method="post" commandName="funcprdt">   
   <a href="addprdt" class="btn btn-info" role="button">Add Product</a>
-  <a href="updateprdt" class="btn btn-info" role="button">Update Product</a>
-   <a href="#" class="btn btn-info" role="button">Delete Product</a>
+  <a href="editprdt" class="btn btn-info" role="button">Update Product</a>
+  
+   <a href="listprdt" class="btn btn-info" role="button"> Product List</a>
    </form:form>
 </div>
 </body>

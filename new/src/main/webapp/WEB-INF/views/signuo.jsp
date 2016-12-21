@@ -112,6 +112,9 @@ confirm_password.onkeyup = validatePassword;
 
 
 <body>
+<div class="item">
+              <img src="resources/images/logo.png">
+      </div>
 
     <div align="center">
           <div class="container">

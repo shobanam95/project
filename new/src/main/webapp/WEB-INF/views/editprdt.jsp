@@ -21,15 +21,14 @@
 
 
 
-<form:form method = "post" action="./editprdt" commandName="editobj">
+<form:form method = "post" action="${url }" commandName="editobj">
 		<table>
-		<tr>
+		
 		 
-			<td><form:label path="product_Id">Product Id:</form:label></td>
-			<td><form:input path="product_Id"/></td>
+		<form:hidden path="product_Id" value="${editobj.product_Id}" />
 			
 			
-        </tr>
+       
         
      <tr>
            <td><form:label path="product_Name">Product Name:</form:label></td>
@@ -37,15 +36,21 @@
        </tr>
        <tr>
            <td><form:label path="product_Description">Product Description:</form:label></td>
-           <td><form:input path="product_Description"/></td>
+           <td><form:input path="product_Description" value = "${editobj.product_Description }"/></td>
        </tr>
        <tr>
            <td><form:label path="product_Price">Product Price:</form:label></td>
-           <td><form:input path="product_Price"/></td>
+           <td><form:input path="product_Price"  value = "${editobj.product_Price }"/></td>
        </tr>
-       <tr>
-           <td><form:label path="category">Category:</form:label></td>
-           <td><form:input path="category" /></td>
+         <tr>
+       <td><label>Category</label></td>
+       <td><select name = "Category">
+           
+           <option value = "Women">Women</option>
+               <option value = "Men">Men</option>
+                   <option value = "Kids">Kids</option>
+           </select>
+     
        </tr>
          
    

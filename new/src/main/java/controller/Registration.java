@@ -3,21 +3,15 @@ package controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.urwardrobe.dao.UserDao;
-
 import com.urwardrobe.model.UserForm;
 
 @Controller
@@ -127,6 +121,8 @@ public  class Registration  {
 
 @RequestMapping("/logout")
 public String Logou(){
+	UserForm user = (UserForm) session.getAttribute("username");
+	session.removeAttribute("user");
 	session.invalidate();
 	return "indexpage";
 }

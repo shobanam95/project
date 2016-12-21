@@ -1,10 +1,18 @@
 package controller;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,16 +26,18 @@ import com.urwardrobe.dao.DaoService;
 import com.urwardrobe.model.Product;
 
 @Controller
-public class ProductAdmin<prdtbean> {
+public class ProductAdmin {
 	
 private DaoService prdtbean;
 	
 	public ProductAdmin(){
+		@SuppressWarnings("resource")
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.urwardrobe.confiig");
 		context.refresh();
-		 prdtbean = (DaoService)context.getBean("prdtbean");
+		 prdtbean = (DaoService)context.getBean("prdtbean");	
 	}
+	
 	
 	@ModelAttribute("prdt")
 	public Product createModel(){
@@ -43,16 +53,10 @@ private DaoService prdtbean;
 	public String openHome()
 	{
 		return "indexpage";
-	}
-	
-
-	
-	     
-	    
-	    @RequestMapping("/contact")  
-	   public String sayContact()
-	   {
-	    	
+	}    
+	@RequestMapping("/contact")  
+	public String sayContact()
+	   {    	
 	   	  
 	    	return "Contact";
 	   }
@@ -61,67 +65,68 @@ private DaoService prdtbean;
 	
 	 @RequestMapping(value ="ProductAdmin")
 	 public String fun(@ModelAttribute("value=funcprdt")Product prdt,ModelMap model) {
-		 System.out.println("inside addstudeent");
-		 
+		
 	    return "ProductAdmin";
 	    
 	   }
 	 @RequestMapping(value ="/addprdt", method = RequestMethod.GET)
 	 public String save1(ModelMap model) {
-		 System.out.println("out addstudeent");
-		 Product prdt = new Product();
-	
-		model.addAttribute("prdt1ad",prdt);
 		
+		Product prdt = new Product();
+		model.addAttribute("prdt1ad",prdt);
 	    return "addprdt";
 	
 	 }
 	 
 	
 		 @RequestMapping(value ="/addprdts", method = RequestMethod.POST)
-	 public String save(@ModelAttribute("value=prdt1ad")Product prdt,ModelMap model) {
+	  public String save(@ModelAttribute("value=prdt1ad")Product prdt,ModelMap model,MultipartFile file,HttpServletRequest request) throws IOException {
 		 System.out.println("llll addstudeent");
+		
 		 prdtbean.save(prdt);
-	    return "redirect:listprdt";
+		MultipartFile check = prdt.getFile();
+		
+		
+		
+		
+		
+		String path = "C:/Users/Admin/git/project/new/src/main/webapp/resources/images/" + prdt.getProduct_Id()+".jpg";
+		
+				byte[] bytes = file.getBytes();
+				BufferedOutputStream image = new BufferedOutputStream(new FileOutputStream(new File(path)));
+				image.write(bytes);
+				image.close();
+			
+		
+	     return "redirect:listprdt";
+	   
 	    
 	   }
-	
-		
-		
 
-	 @RequestMapping("/updateprdt" )
-	   public String update() {
-    return "updateprdt";
+		 @RequestMapping("/updateprdt" )
+	     public String update() {
+            return "updateprdt";
   		  }
 	
 	 
-	 @RequestMapping("/listprdt")
-	
-	 public ModelAndView list() {
+	   @RequestMapping("/listprdt")	
+	   public ModelAndView list() {
 		List<Product> prdt = prdtbean.listProduct();
-		
-	    return new ModelAndView("listprdt","prdtlist",prdt);
-	    
-	   }
+		return new ModelAndView("listprdt","prdtlist",prdt);
+	    }
+	   
 	 @RequestMapping("/editprdt" )
 	   public String update2() {
   return "editprdt";
 		  }
-	 
-	 
+	 	 
 	 @ModelAttribute("editobj")
 		public Product create(){
 			return new  Product();
 		}
-	@RequestMapping("/getProduct/{product_Id}")
-	 public ModelAndView pos(@PathVariable(value="product_Id")int product_Id)
-	 {
-		Product pr=prdtbean.getProduct(product_Id);
-		return new ModelAndView("addprdt","showobj",pr);
-	 }
 	 
 	
-	
+	 	
 	 
 	 @RequestMapping("/deleteprdt")
 	 public String editProductform(@RequestParam("product_Id") int product_Id)
@@ -129,14 +134,15 @@ private DaoService prdtbean;
 		 prdtbean.delete(product_Id);
 		 return ("redirect:/listprdt");
 	 }   
-	 
-	 
+	 	 
 	 
 	 @RequestMapping(value="/editprdts",method=RequestMethod.GET)
 	 public ModelAndView edit(@RequestParam("product_Id")int product_Id)
 	 {
-		 Product prd= this.prdtbean.getProduct(product_Id);
-		  
+		 Product prd= this.prdtbean.getPrdt(product_Id);
+		 System.out.println("prd");
+		 System.out.println(product_Id);
+		 System.out.println(prd);
 		 return new ModelAndView("editprdt","editobj",prd) ;
 	 }
  
@@ -145,6 +151,9 @@ private DaoService prdtbean;
 	 public String editfunc(@ModelAttribute(value="editobj")Product prdt){
 		System.out.println(prdt.getProduct_Name());
 		 prdtbean.update(prdt);
+		 System.out.println("edit");
+		 System.out.println(prdt);
+		 
 		 return ("redirect:/listprdt");
 	 }
 	 
@@ -155,24 +164,22 @@ private DaoService prdtbean;
 		mv.addObject("prod", list);
 		 return mv;
 	 }
+	 
+
+	 @RequestMapping(value="/viewprdt/${product_Id}",method=RequestMethod.GET)
+	    public ModelAndView viewProduct(@PathVariable(value="product_Id")int product_Id,Model model){
+	        Product product = prdtbean.getPrdt(product_Id);
+	        System.out.println(product);
+	        model.addAttribute("product", product);
+return new ModelAndView("viewprdt");
+	        
+	    }
+	 @RequestMapping(value="/viproduct/{product_Id}")
+	 public  ModelAndView check(@PathVariable(value = "product_Id")int product_Id,Model model){
+		 Product check = prdtbean.getPrdt(product_Id);
+		 model.addAttribute("product", check);
+	 System.out.println(check);
+	 return new ModelAndView("viewprdt");
+	 }	
 	
-	 protected ModelAndView onSubmit(HttpServletRequest request,
-				HttpServletResponse response, Object command, BindException errors)
-				throws Exception {
-
-				Product files = (Product)command;
-
-				MultipartFile multipartFile = files.getFile();
-
-				String fileName="";
-
-				if(multipartFile!=null){
-					fileName = multipartFile.getOriginalFilename();
-					
-				}
-				return new ModelAndView("addprdt","prdt1ad",fileName);
-			}
-
-
 }
-

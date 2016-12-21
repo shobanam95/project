@@ -13,7 +13,21 @@
 </head>
 
 <body>
- <table align="centre" border="1">
+
+ <div class="item">
+              <img src="resources/images/logo.png">
+      </div>
+
+<div class="container-wrapper">
+    <div class="container">
+        <div class="page-header">
+            <h1>All Products</h1>
+
+            <p class="lead">Checkout all the awesome products available now!</p>
+        </div>
+
+        <table class="table table-striped table-hover">
+ 
  <tr>
   <th>Product Name</th>
    <th>Product Description</th>
@@ -27,10 +41,12 @@
     <td>${cat.getProduct_Name()}</td>
     <td>${cat.getProduct_Description()}</td>
     <td>${cat.getProduct_Price()}</td>
-    <td><a href ="view">view</a></td>
+    <td><a href ="viproduct/${cat.getProduct_Id()}">view</a></td>
     
 				</c:forEach>
 </table>
+</div>
+</div>
 </body>
 </html>
 

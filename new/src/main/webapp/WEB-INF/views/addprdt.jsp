@@ -137,12 +137,15 @@ $(function(){
      
        </tr>
        <tr>
-     <form:errors path="*" cssClass="errorblock" element="div" />
-
-		<td> <form:input path="file" name="file" />Please select a file to upload :</td>
-		<td><form:input path="submit" value="upload" /></td>
-		<span><form:errors path="file" cssClass="error" />
-		</span>
+       
+     
+	<td>
+			<input type="file"  name="file">
+				
+		
+		</td>
+		
+		
 		</tr>
                  <tr>
          <td colspan="2"> <a href="addprdt"><input type="submit" value="add"/></a></td>
