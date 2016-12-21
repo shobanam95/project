@@ -101,25 +101,7 @@ public void delete(UserForm user) {
 	System.out.println("deleted"+ user);
 }
 
-/*
 
-@SuppressWarnings("unchecked")
-public List<UserForm> list() {
-	Session session = this.sessionfactory.openSession();
-	UserForm user = new UserForm();
-	
-	String checkusr = user.getUsername();
-	String checkpwd = user.getPassword();
-	
-	Criteria criteria = session.createCriteria(UserForm.class);
-	
-	criteria.add(Restrictions.and(Restrictions.eq(checkusr,username), Restrictions.eq(checkpwd,password)));
-	List<UserForm> list = criteria.list();
-	 return  list;
-	
-}
-
-*/
 
 
 
@@ -145,41 +127,9 @@ public  List<UserForm> getUser(String username,String password){
 		
 }
 		
-
 		
 }
-/*
 
-public UserForm getUser(HttpServletRequest request, HttpServletResponse response)
-		  throws ServletException, IOException {
-	
-		 String username = request.getParameter("username");
-		 String password = request.getParameter("password");
-		 HttpSession httpSession = request.getSession();
-
-		SessionFactory factory =(SessionFactory) new Configuration().configure();
-		Session session = factory.openSession();
-		 String query = "from Login login where username=? and password=?";
-		 Query queryObj = session.createQuery(query);
-		 queryObj.setString(0, username);
-		 queryObj.setString(1, password);
-		 @SuppressWarnings("unchecked")
-		List<UserForm> records = queryObj.list();
-		 if(records.size()>0){
-		  request.setAttribute("loginstatus", "Login Successful.");
-		  httpSession.setAttribute("firstame", username);
-		  getServletContext().getRequestDispatcher("/new/indexpage.jsp").forward(request, response);
-		 }else{
-		  request.setAttribute("loginstatus", "Username/Password do not match.");
-		  getServletContext().getRequestDispatcher("/new/loginpage.jsp").forward(request, response);
-		 }
-		return null;
-		}
-
-*/
-
-	
-	
 
 	
 

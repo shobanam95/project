@@ -1,23 +1,14 @@
 package com.urwardrobe.service;
-
-
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.urwardrobe.dao.UserDao;
 import com.urwardrobe.model.UserForm;
 
 
 
 @Service
-
-
-
 
 public class Userimplservice implements UserService {
 	@Autowired	
@@ -42,10 +33,6 @@ public void delete(UserForm user) {
 	Userdao.delete(user);
 	
 }
-
-	
-
-
 
 @Transactional
 public void update(UserForm user) {

@@ -68,10 +68,11 @@ public List<Product> listProduct() {
 
 }
 @Transactional
-public Product getProduct(int product_Id) {
+public Product getPrdt(int product_Id) {
 	Session session = this.sessionfactory.getCurrentSession();
-	session.get(Product.class,product_Id);
-	return getProduct(product_Id);
+	Product product = (Product) session.get(Product.class, product_Id);
+	System.out.println(product);
+	return product;
 }
 
 

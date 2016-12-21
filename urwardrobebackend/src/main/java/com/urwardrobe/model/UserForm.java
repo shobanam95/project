@@ -1,23 +1,10 @@
 package com.urwardrobe.model;
-
-
-
 import javax.persistence.Column;
-
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
-
 
 @Entity
 @Table(name = "UserDetail")
@@ -27,8 +14,6 @@ public class UserForm  {
 	//@Pattern(regexp = "[A-Za-z]\\d[A-Za-z]\\s?\\d[A-Za-z]\\d", message = "Name validation failed.")
 	@Column(name="USERNAME")
 	 	 private String username;
-
-	 
 	@Column(name="PASSWORD")
 	//@NotEmpty
 	    private String password;
@@ -61,7 +46,7 @@ public class UserForm  {
            public String getEmail() {
 			return email;
 		}
-	public void setEmail(String email) {
+           public void setEmail(String email) {
 			this.email = email;
 		}
 		public int getId() {

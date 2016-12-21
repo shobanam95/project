@@ -47,7 +47,7 @@ public void delete(int product_Id) {
 
 public Product  getProduct(int product_Id) {
 	
-	return daoservice.getProduct( product_Id);
+	return daoservice.getPrdt( product_Id);
 	
 }
 

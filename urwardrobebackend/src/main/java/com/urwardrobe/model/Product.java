@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -22,14 +23,18 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name="Products")
 public class Product {
+    
 
 	private String category;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int product_Id;
+	
 	private String product_Name;
+
 	private String product_Description;
-    private int product_Price;
+   
+	private int product_Price;
    @Transient
   private MultipartFile file;
     
@@ -76,6 +81,7 @@ public class Product {
 	}
 	public void setFile(MultipartFile file) {
 		this.file = file;
+		
 	}
 	@Override
 	    public String toString() {
