@@ -14,6 +14,7 @@ import com.urwardrobe.model.Cart;
 import com.urwardrobe.model.CartItem;
 import com.urwardrobe.model.Customer;
 import com.urwardrobe.model.Product;
+import com.urwardrobe.model.UserForm;
 
 
 
@@ -35,48 +36,43 @@ public class App
 		UserDao userbean = (UserDao)context.getBean("userbean");
 		DaoService prdtbean = (DaoService)context.getBean("prdtbean");
 		CartDao cartbean = (CartDao) context.getBean("cartbean");
+		Product product = new Product();
 	Cart cart = new Cart();
 	
 		
-	Product product = new Product();
-		
 	Customer cus = new Customer();
-		cus.setCustomer_Email("shobana@gmail.com");
-		cus.setAddress_Details("Address");
-		cus.setCustomer_Name("shobana");
-		cus.setCustomer_Number(10298929);
-		cus.setCart(cart);
-
+	cus.setCustomer_Email("shobi@gmail.com");
+	cus.setCustomer_Name("Shobana");
+	cus.setCustomer_Number(12345);
+	cus.setAddress_Details("India");
+	cus.setCustomer_Id(1);
+	
+	
+	cartbean.save(cus);
+	
 	AddressDetails add = new  AddressDetails();
 		add.setCity("cbe");
 		add.setCountry("India");
 		add.setState("TN");
 		add.setHouse_Number("10");
 		add.setZipCode("8383");
-		add.setCustomer(cus);
+		add.setAddress_Id(1);
 		add.setStreet_Name("street");
+	cartbean.save(add);
 	
 	CartItem ci = new CartItem();
 		ci.setCartitem_Quantity(10);
 		ci.setCartitem_TotalPrice(1000);
-		ci.setProduct(product);
-		ci.setCart(cart);
 		
-		CartItem ci2 = new CartItem();
-		ci2.setCartitem_Quantity(1);
-		ci2.setCartitem_TotalPrice(1);
-		ci2.setProduct(product);
-		ci2.setCart(cart);
+		ci.setCartitem_Id(1);
+	cartbean.save(ci);
 	
-	List<CartItem> check =  new ArrayList<CartItem>();
 	
-	check.add(ci2);
-	check.add(ci);
+
+		cart.setCart_Id(1);
 		
-		cart.setCustomer(cus);
-		cart.setCartitem(check);
 		cart.setTotal(10000);
-		prdtbean.save(product);
+		
 		cartbean.save(cart);
 		
 		

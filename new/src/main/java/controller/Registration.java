@@ -50,7 +50,17 @@ public  class Registration  {
 		return new  UserForm();
 	
 	}
-
+	@RequestMapping("/")
+	public String openHome()
+	{
+		return "indexpage";
+	}    
+	@RequestMapping("/contact")  
+	public String sayContact()
+	   {    	
+	   	  
+	    	return "Contact";
+	   }
 	 @RequestMapping("/signuo")
 	   public String addSt(){
 		 return "signuo";
@@ -110,7 +120,7 @@ public  class Registration  {
 		}
 		else{
 
-			
+			  session.setAttribute("error", "Either username or password is invalid.");	
 			 view="loginpage";
 			
 		}

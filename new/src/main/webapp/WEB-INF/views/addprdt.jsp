@@ -116,15 +116,15 @@ $(function(){
          
        <tr>
            <td><form:label path="product_Name">Product Name:</form:label></td>
-           <td><form:input path="product_Name" /></td>
+           <td><form:input path="product_Name" required = "true"/></td>
        </tr>
        <tr>
            <td><form:label path="product_Description">Product Description:</form:label></td>
-           <td><form:input path="product_Description"/></td>
+           <td><form:input path="product_Description" required = "true"/></td>
        </tr>
        <tr>
            <td><form:label path="product_Price">Product Price:</form:label></td>
-           <td><form:input path="product_Price"/></td>
+           <td><form:input path="product_Price" required = "true"/></td>
        </tr>
        <tr>
        <td><label>Category</label></td>

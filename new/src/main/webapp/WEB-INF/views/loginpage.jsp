@@ -53,11 +53,12 @@ body {background: #456;font-family: 'Open Sans', sans-serif;}
 
 
   <div class="login-container">
-  
+ 
     <p><input id="username" type="text" name="checkname"  required="true" ></p>
     <p><input id="password" type="password" name="checkpwd" required ="true" ></p>
    
     <p> <input type="submit" value="Log in"></p>
+     ${error }
  </div>
 
 </div>

@@ -7,7 +7,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
 </head>
 <body>
 <div class="item">
@@ -16,7 +39,7 @@
 <h1>List Product</h1>
 <h3><a href="addprdt">Add More Products</a></h3>
 
- <table align="left" border="1">
+ <table id = "customers">
   <tr>
   <th>Product Id</th>
    <th>Product Name</th>

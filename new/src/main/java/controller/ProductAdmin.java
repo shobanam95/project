@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -49,17 +50,7 @@ private DaoService prdtbean;
 	}
 	
 	
-	@RequestMapping("/")
-	public String openHome()
-	{
-		return "indexpage";
-	}    
-	@RequestMapping("/contact")  
-	public String sayContact()
-	   {    	
-	   	  
-	    	return "Contact";
-	   }
+
 	   
 		  
 	
@@ -80,10 +71,11 @@ private DaoService prdtbean;
 	 
 	
 		 @RequestMapping(value ="/addprdts", method = RequestMethod.POST)
-	  public String save(@ModelAttribute("value=prdt1ad")Product prdt,ModelMap model,MultipartFile file,HttpServletRequest request) throws IOException {
+	  public String save(@ModelAttribute("value=prdt1ad")@Valid Product prdt,ModelMap model,MultipartFile file,HttpServletRequest request) throws IOException {
 		 System.out.println("llll addstudeent");
 		
 		 prdtbean.save(prdt);
+		@SuppressWarnings("unused")
 		MultipartFile check = prdt.getFile();
 		
 		
@@ -142,7 +134,7 @@ private DaoService prdtbean;
 		 Product prd= this.prdtbean.getPrdt(product_Id);
 		 System.out.println("prd");
 		 System.out.println(product_Id);
-		 System.out.println(prd);
+		 System.out.println(prd); 
 		 return new ModelAndView("editprdt","editobj",prd) ;
 	 }
  
@@ -164,16 +156,8 @@ private DaoService prdtbean;
 		mv.addObject("prod", list);
 		 return mv;
 	 }
-	 
-
-	 @RequestMapping(value="/viewprdt/${product_Id}",method=RequestMethod.GET)
-	    public ModelAndView viewProduct(@PathVariable(value="product_Id")int product_Id,Model model){
-	        Product product = prdtbean.getPrdt(product_Id);
-	        System.out.println(product);
-	        model.addAttribute("product", product);
-return new ModelAndView("viewprdt");
-	        
-	    }
+	  
+ 
 	 @RequestMapping(value="/viproduct/{product_Id}")
 	 public  ModelAndView check(@PathVariable(value = "product_Id")int product_Id,Model model){
 		 Product check = prdtbean.getPrdt(product_Id);

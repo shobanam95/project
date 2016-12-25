@@ -11,22 +11,37 @@
 <link rel="stylesheet" href="styles.css">
 
 </head>
+<style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
 <body>
 
- <div class="item">
+
               <img src="resources/images/logo.png">
-      </div>
+     
 
-<div class="container-wrapper">
-    <div class="container">
-        <div class="page-header">
-            <h1>All Products</h1>
-
-            <p class="lead">Checkout all the awesome products available now!</p>
-        </div>
-
-        <table class="table table-striped table-hover">
+        <table id="customers">
  
  <tr>
   <th>Product Name</th>

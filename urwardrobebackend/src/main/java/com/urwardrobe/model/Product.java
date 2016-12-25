@@ -28,13 +28,14 @@ public class Product {
 	private String category;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NotEmpty
 	private int product_Id;
-	
+	@NotEmpty
 	private String product_Name;
-
+	@NotEmpty
 	private String product_Description;
-   
-	private int product_Price;
+	@NotEmpty
+	private String product_Price;
    @Transient
   private MultipartFile file;
     
@@ -58,10 +59,10 @@ public class Product {
 	public void setProduct_Description(String product_Description) {
 		this.product_Description = product_Description;
 	}
-	public int getProduct_Price() {
+	public String getProduct_Price() {
 		return product_Price;
 	}
-	public void setProduct_Price(int product_Price) {
+	public void setProduct_Price(String product_Price) {
 		this.product_Price = product_Price;
 	}
 	
