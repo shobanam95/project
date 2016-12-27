@@ -49,7 +49,7 @@
     
     
 				
-        <td align="center"> <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart</a></td>
+        <td align="center"> <a href="Cart"><span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart</a></td>
         <td><a href="buynow" >BUY NOW</a></td>
         
      </tr>      

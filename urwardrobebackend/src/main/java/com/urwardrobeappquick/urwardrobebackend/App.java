@@ -28,7 +28,7 @@ public class App
 	public static void main(String args[])
 	{
 		
-		System.out.println("one");
+		
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.urwardrobe.confiig");
 		context.refresh();
