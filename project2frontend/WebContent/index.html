@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+<nav class="w3-sidenav w3-white w3-card-2" style="display:none">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large">Close &times;</a>
+  <a href="#">HOME</a>		
+  <a href="#">BLOG</a>		
+  <a href="#">FORUM</a>		
+  <a href="#">LOGIN</a>		
+  <a href="reg.html">SIGN UP</a>		
+</nav>
+
+<div id="main">
+
+<header class="w3-container w3-teal">
+  <span class="w3-opennav w3-xlarge" onclick="w3_open()">&#9776;</span>
+  
+</header>
+
+
+
+</div>
+      
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementsByClassName("w3-sidenav")[0].style.width = "25%";
+  document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
+  document.getElementsByClassName("w3-opennav")[0].style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementsByClassName("w3-sidenav")[0].style.display = "none";
+  document.getElementsByClassName("w3-opennav")[0].style.display = "inline-block";
+}
+</script>
+     
+</body>
+</html>
