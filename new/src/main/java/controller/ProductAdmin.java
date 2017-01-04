@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,7 +125,9 @@ private DaoService prdtbean;
 	 public String editProductform(@RequestParam("product_Id") int product_Id)
 	 {
 		 prdtbean.delete(product_Id);
+		
 		 return ("redirect:/listprdt");
+		 
 	 }   
 	 	 
 	 

@@ -60,7 +60,7 @@
    
    
    
-		 <td align="center"><a href="editprdt?product_Id=${Pr.product_Id}">Edit</a> | <a href="deleteprdt?product_Id=${Pr.product_Id}">Delete</a></td>
+		 <td align="center"><a href="editprdt?product_Id=${Pr.product_Id}">Edit</a> | <a href="deleteprdt?product_Id=${Pr.product_Id}"onclick="return confirm('Are you sure you want to Delete?');">Delete</a></td>
 
  </tr>
    
@@ -71,9 +71,4 @@
 
 </body>
 </html>
-<!--  
-    <td><a href="getProduct/${Pr.product_Id}" >${Pr.product_Id}</a></td>
-   		<td><a href="getProduct/${Pr.product_Id}" ><span class="glyphicon glyphicon-info-sign"></span></a>
-		<a href="delete/${Pr.product_Id}"><span class="glyphicon glyphicon-trash"></span></a>
-		<a href="editProduct/${Pr.product_Id }"><span class="glyphicon glyphicon-edit"></span></a>
-		  -->  
+ 

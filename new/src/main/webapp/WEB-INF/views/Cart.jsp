@@ -1,53 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
 </head>
 <body>
-
-
-<form:form  action="addcart" method="post" commandName="cartitem" >
-<div class="container-wrapper">
-    <div class="container">
-        <section>
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>Cart</h1>
-                    <p>All the selected products in your shopping cart</p>
-                </div>
-            </div>
-        </section>
-
-        
-
-                <table class="table table-hover">
-                    <tr>
-                        <th>Product</th>
-                        <th>Product Price</th>
-                        <th>Quantity</th>
-                        <th>Product Description</th>
-                    
-                    </tr>
-                    
-                  <c:forEach var = "c" items="${cartitem}">
-                  <tr>
-                   <td>${c.getProduct_Name()}</td>
-    			   <td>${c.getProduct_Description()}</td>
-   				   <td>${c.getProduct_Price()}</td>
-                  </tr>
-                  </c:forEach>
-                </table>
-
-                <a href="<spring:url value="listprdt" />" class="btn btn-default">Continue Shopping</a>
-            </div>
-       
-</div>
-</form:form>
-
+ 
+ 	<h3>ITEMS IN CART</h3>
+ <form:form method = "post" action = "viproduct/addcarts" commandName="cart">
+	
+		<table class="tg">
+			<tr>
+				
+				<th width="120">Cart Price</th>
+				<th width="120">Product quantity</th>
+				<th width="60">Product Name</th>
+			    
+			     
+			     <th width="120">Remove from Cart</th>
+			      <th width="120">Buy</th>
+			
+			</tr>
+			
+			<c:forEach items="${cart}" var="ct">
+				<tr>
+					
+					<td>${ct.price}</td>
+					<td>${cart.quantity}</td>
+					<td>${ct.getproduct_Name()}</td>
+					
+					
+					
+					
+ 
+					 
+				</tr>
+			</c:forEach>
+		</table>
+	</form:form>
+	
 </body>
 </html>
