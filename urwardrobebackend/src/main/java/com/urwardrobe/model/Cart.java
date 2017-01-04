@@ -17,10 +17,29 @@ public class Cart {
 private int cart_Id;
 
 private double total;
+private int quantity;
 
+private String price;
 
-
-
+private String name;
+public String getPrice() {
+	return price;
+}
+public void setPrice(String string) {
+	this.price = string;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public int getQuantity() {
+	return quantity;
+}
+public void setQuantity(int quantity) {
+	this.quantity = quantity;
+}
 public int getCart_Id() {
 	return cart_Id;
 }
@@ -38,4 +57,6 @@ public void setTotal(double total) {
 public void setTotal(int total) {
 	this.total = total;
 }
+
+
 }
