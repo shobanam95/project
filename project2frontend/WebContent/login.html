@@ -1,0 +1,64 @@
+<html>
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript" src="JS/app.js"></script>
+
+</head>
+<body ng-app="login">
+<div ng-controller="logctrl">
+
+
+  <fieldset>
+    <div id="legend">
+      <legend class="">LOGIN</legend>
+    </div>
+    <div class="control-group">
+     
+      <label class="control-label"  for="username">Username</label>
+      <div class="controls">
+        <input type="text" id="username" name="username" ng-model="username_2" placeholder="" class="input-xlarge">
+       </div>
+       </div>
+       
+  
+    <div class="control-group">
+     
+      <label class="control-label"  for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="password" name="password" ng-model="password_2" placeholder="" class="input-xlarge">
+        
+      </div>
+    </div>
+ <div class="controls">
+      <input  type="submit" ng-click="log()" value="Login"/> 
+       
+      </div>
+ 
+
+
+
+</fieldset>
+</div>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</head>
+
+
+
+
+</html>
