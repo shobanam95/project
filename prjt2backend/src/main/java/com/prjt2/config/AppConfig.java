@@ -23,7 +23,7 @@ import com.prjt2.dao.User2Impl;
 @Configuration 
 
 
-@ComponentScan({ "com.prjt2.config" })
+
 
 @EnableTransactionManagement
 public class AppConfig {
@@ -46,6 +46,7 @@ public class AppConfig {
 	 	  		sessionFactory.setDataSource(getDataSource());
 	 	  		sessionFactory.setHibernateProperties(hibernateProperties());
 	 	  		sessionFactory.setPackagesToScan("com.prjt2.model");
+	 	  		System.out.println("model");
 	 	  		return sessionFactory;
 		   }
 
@@ -53,10 +54,12 @@ public class AppConfig {
 		   @Bean(name = "dataSource")
 		   public DataSource getDataSource() {
 			    BasicDataSource dataSource = new BasicDataSource();
+			   System.out.println("datasource");
 			dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 			dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
 			dataSource.setUsername("PRJT");
 			dataSource.setPassword("123");
+			System.out.println("check datasource");
 			return dataSource;
 			}
 		   
@@ -65,17 +68,13 @@ public class AppConfig {
 		   //commit ---> successful transaction
 		   
 		 
-		   @Bean
-		   public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-		       HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-		       transactionManager.setSessionFactory(sessionFactory().getObject());
-		       return transactionManager;
-		   }
+		 
 		 
 		  
 		 
 		   private Properties hibernateProperties() {
 				Properties properties = new Properties();
+				System.out.print("oracle");
 				properties.put("hibernate.show_sql", "true");
 				properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");//This property makes Hibernate generate the appropriate SQL for the chosen database.
 				properties.put("hibernate.hbm2ddl.auto","update");//hibernate.hbm2ddl.auto Automatically validates or exports schema DDL to the database when the SessionFactory 
@@ -84,13 +83,24 @@ public class AppConfig {
 				//update: update the schema.
 				//create: creates the schema, destroying previous data.
 				//create-drop: drop the schema at the end of the session.
-			
+			System.out.println("check oracle");
 				return properties;
 		   }
+		   
+		   
+		   @Bean
+		   public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+		       HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
+		       transactionManager.setSessionFactory(sessionFactory().getObject());
+		       return transactionManager;
+		   }
+		   
 		   @Bean(name="user2bean")
-		   public User2Dao userbean() {
+		   public User2Dao user2bean() {
+			   System.out.println("bean");
 				return new User2Impl();
 			}
+		   
 		   
 		   
 		   

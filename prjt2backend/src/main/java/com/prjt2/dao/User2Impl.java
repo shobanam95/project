@@ -1,25 +1,44 @@
 package com.prjt2.dao;
 
+import java.util.List;
+
+
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.prjt2.model.User2;
 
+
+@Repository
 public class User2Impl implements User2Dao {
 
 	@Autowired
 	private SessionFactory sessionfactory;
 	
+	public SessionFactory getSessionfactory() {
+		return sessionfactory;
+	}
+	public void setSessionfactory(SessionFactory sessionfactory) {
+		this.sessionfactory = sessionfactory;
+	}
+	
 	@Transactional
 	public void save(User2 user2) {
-	Session session = this.sessionfactory.openSession();
+		
+	Session session = sessionfactory.getCurrentSession();
+	user2.setRole_2("User");
+	
 	session.save(user2);
 	session.flush();
 
 	}
+
 @Transactional
 	public void update(User2 user2) {
 		Session session = this.sessionfactory.openSession();
@@ -34,5 +53,14 @@ public class User2Impl implements User2Dao {
 		session.flush();
 
 	}
+@Transactional
+public List<User2> getUser(String username_2, String password_2) {
+	Session session = this.sessionfactory.getCurrentSession();
+	Criteria criteria = session.createCriteria(User2.class);
+	criteria.add(Restrictions.and(Restrictions.eq("username_2",username_2), Restrictions.eq("password_2",password_2)));
+
+	List<User2> list = criteria.list();
+	return list;
+}
 
 }

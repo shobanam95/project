@@ -1,6 +1,7 @@
 package com.prjt2.model;
 
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ public class User2 {
 	
 	private String role_2;
 	
-	private int phno_2;
+	private String phno_2;
 	
 	private String email_2;
 	
@@ -64,13 +65,11 @@ public class User2 {
 	public void setRole_2(String role_2) {
 		this.role_2 = role_2;
 	}
-	public int getPhno_2() {
+	public String getPhno_2() {
 		return phno_2;
 	}
-	public void setPhno_2(int phno_2) {
+	public void setPhno_2(String phno_2) {
 		this.phno_2 = phno_2;
 	}
-	
-	
-	
+
 }

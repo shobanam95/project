@@ -27,7 +27,7 @@ public class App {
 		u2.setRole_2("student");
 		u2.setPassword_2("1234");
 		u2.setConfirmpassword_2("1234");
-		u2.setPhno_2(123456789);
+		u2.setPhno_2("1245");
 		u2.setEmail_2("shobi@gmail.com");
 		user2bean.save(u2);
 		
