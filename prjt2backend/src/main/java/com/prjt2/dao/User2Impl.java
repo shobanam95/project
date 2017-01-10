@@ -57,10 +57,13 @@ public class User2Impl implements User2Dao {
 public List<User2> getUser(String username_2, String password_2) {
 	Session session = this.sessionfactory.getCurrentSession();
 	Criteria criteria = session.createCriteria(User2.class);
+	System.out.println(username_2);
+	System.out.println(password_2);
 	criteria.add(Restrictions.and(Restrictions.eq("username_2",username_2), Restrictions.eq("password_2",password_2)));
 
-	List<User2> list = criteria.list();
-	return list;
+	List<User2> list1 = criteria.list();
+	System.out.println("list"+list1);
+	return list1;
 }
 
 }

@@ -23,13 +23,14 @@ public class App {
 		context.refresh();
 		User2Dao user2bean = (User2Dao) context.getBean("user2bean");
 		User2 u2 = new User2();
-		u2.setUsername_2("Shobana");
-		u2.setRole_2("student");
-		u2.setPassword_2("1234");
-		u2.setConfirmpassword_2("1234");
-		u2.setPhno_2("1245");
-		u2.setEmail_2("shobi@gmail.com");
+		u2.setUsername_2("Shobi");
+		
+		u2.setPassword_2("pswd");
+		u2.setConfirmpassword_2("pswd");
+		u2.setPhno_2("pswd");
+		u2.setEmail_2("shobi123@gmail.com");
 		user2bean.save(u2);
+		System.out.println(user2bean);
 		
 		
 	}

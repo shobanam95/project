@@ -31,6 +31,7 @@ public class Controller2 {
 		context.scan("com.prjt2.config");
 		context.refresh();
 		user2bean = (User2Dao) context.getBean("user2bean");
+		System.out.println("login controller");
 		}
 	
 	
@@ -42,6 +43,7 @@ public class Controller2 {
 	public ResponseEntity add(@PathVariable String username_2,String email_2,String password_2,String confirmpassword_2,String phno_2) {
 	try{	
 	System.out.println(username_2);
+	System.out.println(password_2);
 User2 user = new User2();
 user.setUsername_2(username_2);
 user.setConfirmpassword_2(confirmpassword_2);
@@ -62,8 +64,9 @@ return new ResponseEntity(HttpStatus.OK);
 }
 
 
-@RequestMapping(value="/login/{username_2}/{passsword_2}",method=RequestMethod.GET)
+@RequestMapping(value="/login/{username_2}/{passsword_2}",method=RequestMethod.POST)
 public ResponseEntity log(@PathVariable String username_2,String password_2){
+	System.out.println("entering rest controller");
 	try{
 		
 	
