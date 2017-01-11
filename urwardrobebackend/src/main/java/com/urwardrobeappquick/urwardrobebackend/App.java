@@ -22,7 +22,7 @@ public class App
 {
 
 
-	private static final int List = 0;
+	
 
 	@SuppressWarnings({ "resource", "unused", "unchecked" })
 	public static void main(String args[])
