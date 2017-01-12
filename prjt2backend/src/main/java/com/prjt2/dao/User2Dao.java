@@ -1,5 +1,6 @@
 package com.prjt2.dao;
 
+
 import java.util.List;
 
 import com.prjt2.model.User2;

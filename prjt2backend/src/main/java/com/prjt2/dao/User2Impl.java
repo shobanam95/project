@@ -6,6 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -53,17 +54,19 @@ public class User2Impl implements User2Dao {
 		session.flush();
 
 	}
+
 @Transactional
 public List<User2> getUser(String username_2, String password_2) {
 	Session session = this.sessionfactory.getCurrentSession();
 	Criteria criteria = session.createCriteria(User2.class);
-	System.out.println(username_2);
+	System.out.println("checking@Dao"+"  "+username_2);
 	System.out.println(password_2);
 	criteria.add(Restrictions.and(Restrictions.eq("username_2",username_2), Restrictions.eq("password_2",password_2)));
-
+	//Query criteria1=session.createQuery("from User2 u where u.username_2='"+username_2+"' and u.password_2='"+password_2+"'" );
 	List<User2> list1 = criteria.list();
-	System.out.println("list"+list1);
+	System.out.println("list"+" "+list1);
 	return list1;
 }
 
 }
+
