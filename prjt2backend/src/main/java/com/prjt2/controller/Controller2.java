@@ -9,9 +9,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prjt2.dao.User2Dao;
@@ -65,29 +66,22 @@ return new ResponseEntity(HttpStatus.OK);
 
 
 @RequestMapping(value="/log/{username_2}/{password_2}",method=RequestMethod.POST)
-public ResponseEntity check(@PathVariable String username_2,@PathVariable String password_2,HttpServletRequest res){
+public ResponseEntity<?>check(@RequestBody User2 user,@PathVariable String username_2,@PathVariable String password_2){
 	
-		try{
-			session=res.getSession(true);
+		
+			
 			List<User2> list =user2bean.getUser(username_2,password_2);
+			if(list!=null){
+			
 			System.out.println(username_2);
 			System.out.println(password_2);
-			return new ResponseEntity(HttpStatus.OK);
-
-			
-			
-		}catch(Exception E){
-			
-			
-			
-		
-		
-		System.out.println("logging");
-						return new ResponseEntity(HttpStatus.OK);
+			return new ResponseEntity<>(list,HttpStatus.OK);
 			}
+			else{
+				
+				return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+			}
+			
+			
 }
-		
-	
-
-
 }
