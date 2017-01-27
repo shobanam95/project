@@ -9,7 +9,7 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.min.js"></script>
    
-<script type="text/javascript" src="JS/app.js"></script>
+<script type="text/javascript" src="JS/App2.js"></script>
   <link rel="stylesheet" href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
  
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -117,19 +117,19 @@ $(".glyphicon-eye-open").mousedown(function(){
 })
 
 
-function check(){
-	var password = document.getElementById("pwd")
-	  , confirm_password = document.getElementById("pwd2");
+var password = document.getElementById("pwd")
+  , confirm_password = document.getElementById("pwd2");
 
+function validatePassword(){
   if(password.value != confirm_password.value) {
     confirm_password.setCustomValidity("Passwords Don't Match");
   } else {
     confirm_password.setCustomValidity('');
   }
-
 }
+
 </script>
-<body ng-app="myApp"  ng-controller = "ctrl">
+<body ng-app="register"  ng-controller = "regctrl">
  <div class="register">
 	<h1>Register Form </h1>
 	

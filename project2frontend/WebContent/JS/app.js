@@ -1,23 +1,47 @@
-var app=angular.module('myApp',[]);
 
-app.controller('ctrl',function ($scope,$http,$window,$location)
-{
-var url1 = "http://"+$window.location.host+"/prjt2backend";	
+var app=angular.module("myApp",['ngRoute']); 
 
-$scope.reg=function reg()
-{
-	alert ("function");
-	
-
-	$http.post(url1+'/register/'+$scope.username_2+'/'+$scope.email_2+'/'+$scope.password_2+'/'+$scope.confirmpassword_2+'/'+$scope.phno_2).success(function(data)
-{
+app.controller('ctrl',function($scope,$http,$route,$location,$window)
 		
-alert("controller");
-});
-}
+		{
+	var url1 = "http://"+$window.location.host+"/prjt2backend";	
+        
+        
 
-})
+	           $scope.log=function log()
+	{
+      
+               $http.post(url1+'/log').success(function(data)
+	{
+		     
+	     
+	    
+	   {
+		   
+		   $window.location.href = "http://localhost:8082/project2frontend/check.html";
+	   }
+       
+         console.log(data);
+	
+      }).error(function()
+	{
+    	  
+			   $window.alert("wrong username and password");
+	});
+	}
+	
+	
+    
+	           
+	
+   
+	});
+	  
 
-
+          app.config(function($routeProvider){
+		  $routeProvider.when("/log",{templateUrl: "loginform.html"})
+		  $routeProvider.when("/register",{templateUrl:"regform.html"})
+		  $routeProvider.when("/index",{templateUrl: "index.html"});
+	});
 
 

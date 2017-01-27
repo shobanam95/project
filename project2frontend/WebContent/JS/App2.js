@@ -1,43 +1,29 @@
-var app = angular.module('login',['ngRoute'])
+var app=angular.module('register',[]);
 
-app.controller('logctrl',function ($scope,$http,$window,$location)
-		{
-	$scope.user={username_2:'',email_2:'',password_2:'',confirmpassword_2:'',phno_2:''};
-	alert("entering");
-	var url = "http://"+$window.location.host+"/prjt2backend";		
-	$scope.log = function login(){
-		alert("Controller");
-		$http.post(url+'/log/'+$scope.username_2+'/'+$scope.password_2).success(function(data)
+app.controller('regctrl',function ($scope,$http,$window,$location)
+{
+var url1 = "http://"+$window.location.host+"/prjt2backend";	
+
+$scope.reg=function reg()
+{
+
 	
-				{
-			
-			alert("login controller");
-			});
+
+	$http.post(url1+'/register/'+$scope.username_2+'/'+$scope.email_2+'/'+$scope.password_2+'/'+$scope.confirmpassword_2+'/'+$scope.phno_2).success(function(data)
+{
+alert("registered successfully");		
+{
+	 $window.location.href = "http://localhost:8082/project2frontend/loginform.html";
+
+
+}
 	
-		
+}).error(function()
+{
+		   $window.alert("wrong username and password");
+});
 
-		}
-
+}
 
 })
 
-app.controller('UserController',function($scope,$location,UserService){
-	$scope.user={id:'',username:'',password:'',email:'',role:'',isOnline:'',enabled:''};
-	$scope.message;
-	$scope.submit=function(){
-		console.log('Entering - submit function in usercontroller')
-		UserService.authenticate($scope.user)
-		.then(function(response){
-			if(response.status==401)
-				{
-				  $scope.message="Invalid Username and Password";
-				  $location.path("/login");
-				}
-			else{
-				$scope.user=response.data;
-				$location.path("/home");
-			}
-		})
-	}
-	
-})
