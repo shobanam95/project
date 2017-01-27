@@ -65,23 +65,22 @@ return new ResponseEntity(HttpStatus.OK);
 
 
 
-@RequestMapping(value="/log/{username_2}/{password_2}",method=RequestMethod.POST)
-public ResponseEntity<?>check(@RequestBody User2 user,@PathVariable String username_2,@PathVariable String password_2){
-	
-		
-			
-			List<User2> list =user2bean.getUser(username_2,password_2);
+	@RequestMapping(value="/log",method=RequestMethod.POST)
+	public ResponseEntity<User2>check(@RequestBody User2 user,@PathVariable String username_2,@PathVariable String password_2){
+		System.out.println("check");
+		List<User2> list =user2bean.getUser(username_2,password_2);
+		System.out.println(list);
 			if(list!=null){
 			
 			System.out.println(username_2);
 			System.out.println(password_2);
-			return new ResponseEntity<>(list,HttpStatus.OK);
+			return new ResponseEntity<User2>((User2) list,HttpStatus.OK);
 			}
 			else{
 				
 				return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-			}
-			
-			
+		}
 }
+	
+	
 }
