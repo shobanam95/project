@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+<script type="text/javascript" src="JS/blog.js"></script>
+<link rel="stylesheet" href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="blogApp">
+<div ng-controller="BlogController">
+     <div class = "container">
+     <h1>Title</h1>
+     <input type = "text" name="Blogtitle" ng-model = "title"placeholder = "Title" />     
+     <h2>Body</h2>
+    <textarea rows="4" cols="50" ng-model = "body"name="BlogBody" >
+Enter text here...</textarea>
+      <h3>Author</h3>
+       <input type = "text" name="Blogcomment" ng-model = "comment" placeholder = "Comment" />  
+     </div>
+        <button type = "submit" ng-click = "blogsubmit()" class="btn btn-primary btn-block ">Post A New Blog </button>
+
+  </div>
+
+</body>
+</html>

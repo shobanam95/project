@@ -8,10 +8,10 @@ app.controller('ctrl',function($scope,$http,$route,$location,$window)
         
         
 
-	           $scope.log=function log()
+	           $scope.log=function()
 	{
-      
-               $http.post(url1+'/log').success(function(data)
+	        	   $http.post(url1+'/logger/'+$scope.username_2+'/'+$scope.password_2).success(function(data)
+             
 	{
 		     
 	     
