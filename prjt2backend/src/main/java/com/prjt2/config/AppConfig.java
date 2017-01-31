@@ -15,6 +15,8 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.prjt2.dao.Blog2Dao;
+import com.prjt2.dao.Blog2Impl;
 import com.prjt2.dao.User2Dao;
 import com.prjt2.dao.User2Impl;
 
@@ -102,9 +104,13 @@ public class AppConfig {
 			}
 		   
 		   
-		   
+		 @Bean(name="blog2bean")
+		   public Blog2Dao blog2bean(){
+			 return new Blog2Impl();
+		 }
 		   
 		  
 		 }
 
 
+                                          
